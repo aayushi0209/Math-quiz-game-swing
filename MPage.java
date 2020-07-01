@@ -21,7 +21,7 @@ class MPage extends JPanel implements ActionListener,ItemListener{
     JButton b1,b2,b3,b4;//for start,restart,stop and instruction
     JButton back;
     JButton[] opt=new JButton[4];//for option buttons
-   
+    JButton name;
     //for backgrund image
     Image im;
     ImageIcon i;
@@ -150,14 +150,17 @@ class MPage extends JPanel implements ActionListener,ItemListener{
         add(lt4);
         
         
-        String name= JOptionPane.showInputDialog("ENTER USERNAME:-");       
-        if(name!=""){
-            unm=name;
-        }
-        nm=new JLabel("Name:"+unm);
-        nm.setBounds(50,450,200,20);
+     
+        nm=new JLabel("Name:");
+        nm.setBounds(50,450,100,20);
         nm.setFont(f);
         add(nm);
+
+        name=new JButton("Player");
+        name.setBounds(150,450,100,20);
+        name.setFont(f);
+        add(name);
+        name.addActionListener(this);
 
         cr=new JLabel("Correct:0");
         cr.setBounds(50,480,200,20);
@@ -213,6 +216,15 @@ class MPage extends JPanel implements ActionListener,ItemListener{
     }
     public void actionPerformed(ActionEvent e){
     
+         if(e.getSource()==name){
+               String n= JOptionPane.showInputDialog("ENTER USERNAME:-");       
+                if(n!=""){
+                unm=n;
+                }
+                name.setText(unm);
+         }
+
+
         String s1=(String)jb1.getSelectedItem();
         String s2=(String)jb2.getSelectedItem();
         
